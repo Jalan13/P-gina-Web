@@ -10,7 +10,11 @@ const vehiculos = [
         rating: 4.8,
         popular: true,
         combustible: "Gasolina",
-        año: 2024
+        año: 2024,
+         galeria: [
+    "img/Prueba de interior.jpeg", // Imagen de prueba
+    "video/Toyota Grand Highlander Prueba de video.mp4" // Video de prueba
+]
     },
     {
         id: 2,
@@ -58,7 +62,11 @@ const vehiculos = [
         rating: 4.8,
         popular: true,
         combustible: "Gasolina",
-        año: 2024
+        año: 2024,
+        galeria: [
+    "img/Prueba de interior.jpeg", // Imagen de prueba
+    "video/Toyota Grand Highlander Prueba de video.mp4" // Video de prueba
+]
     },
     {
         id: 6,
@@ -185,61 +193,53 @@ function cambiarSeccion(nuevaSeccion) {
 }
 
 function cargarVehiculos(categoria = 'vehiculos') {
-    let vehiculosFiltrados;
-    let contenedor;
-    
-    switch (categoria) {
-        case 'toyota':
-            vehiculosFiltrados = vehiculos.filter(vehiculo => vehiculo.marca === 'toyota');
-            contenedor = document.getElementById('contenedor-toyota');
-            break;
-        case 'honda':
-            vehiculosFiltrados = vehiculos.filter(vehiculo => vehiculo.marca === 'honda');
-            contenedor = document.getElementById('contenedor-honda');
-            break;
-       case 'hyundai':
-    vehiculosFiltrados = vehiculos.filter(vehiculo => vehiculo.marca.toLowerCase() === 'hyundai');
-    contenedor = document.getElementById('contenedor-hyundai');
-    break;
-        default:
-            vehiculosFiltrados = vehiculos;
-            contenedor = document.getElementById('contenedor-productos');
+    let vehiculosFiltrados = vehiculos.filter(vehiculo => {
+        if (categoria === 'vehiculos') return true;
+        return vehiculo.marca.toLowerCase() === categoria.toLowerCase();
+    });
+
+    const contenedor = document.getElementById(`contenedor-${categoria}`) || 
+                      document.getElementById('contenedor-productos');
+
+    if (!contenedor) {
+        console.error('Contenedor no encontrado');
+        return;
     }
-    
-    if (!contenedor) return;
-    
+
     contenedor.innerHTML = '';
-    
-    vehiculosFiltrados.forEach((vehiculo, index) => {
+
+    vehiculosFiltrados.forEach(vehiculo => {
+        const tituloLimpio = vehiculo.titulo.replace(/\s*SSD\/dfa\s*/, '');
+        const tieneGaleria = vehiculo.galeria && vehiculo.galeria.length > 0;
+
         const div = document.createElement('div');
-        div.classList.add('producto');
-        div.style.animationDelay = `${index * 0.1}s`;
-        
-        div.innerHTML = `
-            ${vehiculo.popular ? '<div class="badge-popular">Popular</div>' : ''}
-            <img class="producto-imagen" src="${vehiculo.imagen}" alt="${vehiculo.titulo}">
-            <div class="producto-detalles">
-                <div class="producto-rating">
-                    <span class="rating-stars">★</span>
-                    <span class="rating-number">${vehiculo.rating}</span>
-                </div>
-                <h3 class="producto-titulo">${vehiculo.titulo}</h3>
-                <p class="producto-precio">$${vehiculo.precio}/día</p>
-                <div class="producto-caracteristicas">
-                    ${vehiculo.caracteristicas.map(caracteristica => 
-                        `<span class="caracteristica">${caracteristica}</span>`
-                    ).join('')}
-                </div>
-                <button class="producto-agregar" id="${vehiculo.id}">Rentar Ahora</button>
-            </div>
-        `;
-        
+        div.className = 'producto';
+   div.innerHTML = `
+    ${vehiculo.popular ? '<div class="badge-popular">Popular</div>' : ''}
+    <div class="producto-imagen-container">
+        <img src="${vehiculo.imagen}" alt="${tituloLimpio}" class="producto-imagen">
+    </div>
+    <div class="producto-detalles">
+        <h3>${tituloLimpio}</h3>
+        <p class="producto-precio">$${vehiculo.precio}/día</p>
+        <div class="botones-container">
+            <button class="producto-agregar" id="${vehiculo.id}">Rentar Ahora</button>
+            ${tieneGaleria ? `
+                <button class="boton-galeria" data-id="${vehiculo.id}">
+                    <i class="bi bi-images"></i> Ver galería
+                </button>
+            ` : ''}
+        </div>
+    </div>
+`;
         contenedor.appendChild(div);
     });
-    
-    // Agregar event listeners a los botones de agregar
-    actualizarBotonesAgregar();
+
+ actualizarBotonesAgregar();
+    inicializarBotonesGaleria(); // Esta línea debe estar presente
 }
+    
+
 
 function actualizarBotonesAgregar() {
     const botonesAgregar = document.querySelectorAll('.producto-agregar');
@@ -324,3 +324,65 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
+
+
+function inicializarBotonesGaleria() {
+    document.querySelectorAll('.boton-galeria').forEach(boton => {
+        boton.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const vehiculo = vehiculos.find(v => v.id == id);
+            if (vehiculo && vehiculo.galeria) {
+                abrirModalGaleria(vehiculo);
+            }
+        });
+    });
+}
+
+function abrirModalGaleria(vehiculo) {
+    const modal = document.getElementById('modal-carrusel');
+    const modalContent = modal.querySelector('.modal-contenido');
+    
+    // Verificar si hay galería
+    if (!vehiculo.galeria || vehiculo.galeria.length === 0) {
+        console.error("No hay elementos en la galería para este vehículo");
+        return;
+    }
+
+    modalContent.innerHTML = `
+        <span class="cerrar-modal">&times;</span>
+        <h2 style="text-align: center; margin-bottom: 20px;">${vehiculo.titulo.replace(/\s*SSD\/dfa\s*/, '')}</h2>
+        <div class="contenedor-galeria">
+            <div class="galeria-modal">
+                <!-- Imagen principal -->
+                <div class="media-item">
+                    <img src="${vehiculo.imagen}" alt="Vista principal">
+                    <p class="leyenda-imagen">Vista exterior</p>
+                </div>
+                <!-- Imágenes/videos adicionales -->
+                ${vehiculo.galeria.map((item, index) => `
+                    <div class="media-item">
+                        ${item.endsWith('.mp4') ? 
+                            `<video controls><source src="${item}" type="video/mp4"></video>` : 
+                            `<img src="${item}" alt="Vista adicional ${index + 1}">`
+                        }
+                        <p class="leyenda-imagen">${item.endsWith('.mp4') ? 'Video demostrativo' : 'Vista interior'}</p>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    modal.style.display = "flex";
+    
+    // Cerrar modal al hacer clic
+    modal.querySelector('.cerrar-modal').addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+}

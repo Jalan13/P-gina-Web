@@ -74,7 +74,7 @@ aside {
     padding: 0;
     /* Filtro para mejorar visibilidad */
     filter: 
-        drop-shadow(0 0 3px rgba(220, 38, 38, 0.7)) /* Sombra roja sutil */
+        
         brightness(1.05); /* Ajuste de brillo */
     display: block;
     margin: 0 auto;
@@ -1340,4 +1340,218 @@ main {
     width: 100% !important;
     max-width: 350px !important;
     margin: 0 auto !important;
+}
+
+
+
+
+/* Estilos del modal (deben estar en main.css) */
+.modal-carrusel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-contenido {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: var(--clr-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para imágenes y videos dentro del modal */
+.carrusel-slide img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-bottom: 1px solid var(--clr-gray);
+}
+
+.carrusel-slide video {
+    width: 100%;
+    max-height: 70vh;
+    outline: none;
+    background: #000;
+}
+
+/* Controles de navegación */
+.anterior, .siguiente {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(220, 38, 38, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.anterior:hover, .siguiente:hover {
+    background: var(--clr-red);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.anterior { left: 20px; }
+.siguiente { right: 20px; }
+
+/* Botón de cerrar */
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--clr-white);
+    background: var(--clr-red);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+/* Estilos para la galería horizontal */
+.contenedor-galeria {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+    white-space: nowrap;
+}
+
+.galeria-modal {
+    display: inline-flex;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.media-item {
+    display: inline-block;
+    width: 720px;
+    flex-shrink: 0;
+}
+
+.media-item img, 
+.media-item video {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.leyenda-imagen {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    white-space: normal;
+}
+
+
+
+
+
+
+
+
+
+
+/* Estilos para los botones */
+.producto-agregar, 
+.boton-galeria {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.producto-agregar {
+    background: linear-gradient(135deg, var(--clr-red), var(--clr-red-dark));
+    color: var(--clr-white);
+}
+
+.boton-galeria {
+    background: linear-gradient(135deg, #4b5563, #1f2937);
+    color: var(--clr-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.producto-agregar:hover {
+    background: linear-gradient(135deg, var(--clr-red-dark), var(--clr-red));
+}
+
+.boton-galeria:hover {
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+}
+
+
+
+
+
+
+
+/* Estilos para la página de privacidad */
+.privacidad-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--clr-white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.privacidad-container h2 {
+    color: var(--clr-red);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.privacidad-container ul {
+    margin-bottom: 1.5rem;
+}
+
+.privacidad-container li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
