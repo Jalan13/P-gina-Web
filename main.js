@@ -41,16 +41,16 @@ const vehiculos = [
         año: 2024
     },
     {
-        id: 4,
-        titulo: "Toyota Highlander 2024",
-        imagen: "https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&cs=tinysrgb&w=400",
-        precio: 80,
-        marca: "toyota",
-        caracteristicas: ["SUV", "8 Asientos", "AWD", "Premium"],
-        rating: 4.9,
+       id: 4,
+        titulo: "Toyota CR-V 2007",
+        imagen: "img/CRV Negra 2010.jpg",
+        precio: 40,
+        marca: "honda",
+        caracteristicas: ["SUV", "5 Asientos", "FWD",],
+        rating: 4.2,
         popular: false,
-        combustible: "Híbrido",
-        año: 2024
+        combustible: "Gasolina",
+        año: 2007
     },
     {
         id: 5,
@@ -385,4 +385,5 @@ function abrirModalGaleria(vehiculo) {
             modal.style.display = "none";
         }
     });
+
 }
