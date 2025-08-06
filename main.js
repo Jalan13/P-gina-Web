@@ -13,13 +13,13 @@ const vehiculos = [
         año: 2024,
          galeria: [
     "img/Prueba de interior.jpeg", // Imagen de prueba
-    "video/Toyota Grand Highlander Prueba de video.mp4" // Video de prueba
+    "video/video toyota highlander.mp4" // Video de prueba
 ]
     },
     {
         id: 2,
         titulo: "Toyota RAV4 2024",
-        imagen: "",
+        imagen: "https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&cs=tinysrgb&w=400",
         precio: 65,
         marca: "toyota",
         caracteristicas: ["SUV", "AWD", "5 Asientos", "Cámara"],
@@ -41,8 +41,8 @@ const vehiculos = [
         año: 2024
     },
     {
-       id: 4,
-        titulo: "Toyota CR-V 2007",
+        id: 4,
+        titulo: "Honda CR-V 2007",
         imagen: "img/CRV Negra 2010.jpg",
         precio: 40,
         marca: "honda",
@@ -50,7 +50,10 @@ const vehiculos = [
         rating: 4.2,
         popular: false,
         combustible: "Gasolina",
-        año: 2007
+        año: 2007,
+        galeria: [
+            "video/video honda crv 2007 negra.mp4"
+        ]
     },
     {
         id: 5,
@@ -114,7 +117,10 @@ const vehiculos = [
         rating: 4.7,
         popular: false,
         combustible: "Gasolina",
-        año: 2015
+        año: 2015,
+        galeria: [
+            "video/video hyundai santa fe.mp4"
+        ]
     }
 ];
 
@@ -385,6 +391,4 @@ function abrirModalGaleria(vehiculo) {
             modal.style.display = "none";
         }
     });
-
 }
-

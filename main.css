@@ -117,6 +117,8 @@ aside {
     border-radius: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
+    min-width: 44px;  /* Tamaño mínimo para touch */
+    min-height: 44px;
 }
 
 .boton-menu:hover {
@@ -768,6 +770,10 @@ main {
     .wrapper {
         flex-direction: column;
     }
+
+    .media-item {
+        width: 95vw; /* Ocupa casi todo el ancho en móviles */
+    }
     
     aside {
         position: fixed;
@@ -824,7 +830,11 @@ main {
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
     .container {
@@ -1229,7 +1239,12 @@ main {
 @media screen and (max-width: 768px) {
     .contenedor-carrito {
         padding: 1rem;
+    
+        .media-item {
+        width: 95vw; /* Ocupa casi todo el ancho en móviles */
     }
+        
+}
     
     .carrito-producto {
         grid-template-columns: 1fr;
@@ -1287,6 +1302,13 @@ main {
     
     .dias-input {
         width: 80px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem; /* Reduce tamaño en móviles */
+    }
+    .hero-subtitle {
+        font-size: 1rem;
     }
 }
 
