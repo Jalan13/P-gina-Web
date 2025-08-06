@@ -18,48 +18,49 @@ const vehiculos = [
     },
     {
         id: 2,
-        titulo: "Toyota RAV4 2024",
+        titulo: "Honda CR-V 2018",
         imagen: "https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&cs=tinysrgb&w=400",
-        precio: 65,
-        marca: "toyota",
+        precio: 60,
+        marca: "honda",
         caracteristicas: ["SUV", "AWD", "5 Asientos", "Cámara"],
         rating: 4.9,
         popular: true,
-        combustible: "Híbrido",
-        año: 2024
+        combustible: "Gasolina",
+        año: 2018
     },
     {
         id: 3,
-        titulo: "Toyota Camry 2024",
+        titulo: "Honda CR-V 2015",
         imagen: "https://images.pexels.com/photos/2479557/pexels-photo-2479557.jpeg?auto=compress&cs=tinysrgb&w=400",
-        precio: 55,
-        marca: "toyota",
+        precio: 45,
+        marca: "honda",
         caracteristicas: ["Sedán", "Premium", "5 Asientos", "Bluetooth"],
         rating: 4.7,
         popular: false,
         combustible: "Gasolina",
-        año: 2024
+        año: 2015
     },
     {
         id: 4,
-        titulo: "Honda CR-V 2007",
+        titulo: "Honda CR-V 2011",
         imagen: "img/Imagen honda 2011.jpg",
-        precio: 40,
+        precio: 35,
         marca: "honda",
         caracteristicas: ["SUV", "5 Asientos", "FWD",],
         rating: 4.2,
         popular: false,
         combustible: "Gasolina",
-        año: 2007,
+        año: 2011,
         galeria: [
-            "video/video honda crv 2007 negra.mp4"
+            "img/Imagen interior crv negra 2011.jpg",
+            "video/video honda crv 2011 negra.mp4"
         ]
     },
     {
         id: 5,
         titulo: "Honda CR-V 2020",
         imagen: "img/CRV Gris 2020.jpg",
-        precio: 50,
+        precio: 60,
         marca: "honda",
         caracteristicas: ["Automático", "GPS", "5 Asientos", "USB"],
         rating: 4.8,
@@ -67,51 +68,62 @@ const vehiculos = [
         combustible: "Gasolina",
         año: 2024,
         galeria: [
-    "img/Prueba de interior.jpeg", // Imagen de prueba
-    "video/Toyota Grand Highlander Prueba de video.mp4" // Video de prueba
+           "img/Prueba de interior.jpeg", // Imagen de prueba
+           "video/Video crv gris 2020.mp4" // Video de prueba
 ]
     },
     {
         id: 6,
-        titulo: "Honda CR-V 2020",
+        titulo: "Honda CR-V 2019",
         imagen: "img/CRV Gris Nardo 2020.jpg",
-        precio: 70,
+        precio: 60,
         marca: "honda",
         caracteristicas: ["SUV", "AWD", "7 Asientos", "Cámara"],
         rating: 4.9,
         popular: true,
         combustible: "Gasolina",
-        año: 2024
+        año: 2019,
+        galeria: [
+            "video/Video crv gris 2019.mp4"
+        ]
     },
     {
         id: 7,
-        titulo: "Honda CR-V 2010",
-        imagen: "img/CRV Gris 2010.jpg",
-        precio: 60,
+        titulo: "Honda CR-V 2013",
+        imagen: "img/Imagen crv gris 2013.jpg",
+        precio: 45,
         marca: "honda",
         caracteristicas: ["Sedán", "Premium", "5 Asientos", "Sunroof"],
         rating: 4.8,
         popular: false,
         combustible: "Gasolina",
-        año: 2024
+        año: 2024,
+        galeria: [
+            "img/Imagen interir crv gris 2013.jpg",
+            "video/Video crv gris 2013.mp4"
+        ]
     },
     {
         id: 8,
-        titulo: "Honda CR-V 2013",
-        imagen: "img/CRV Blanca 2013.jpg",
-        precio: 75,
+        titulo: "Honda CR-V 2015",
+        imagen: "img/Imagen crv blanca 2016.jpg",
+        precio: 45,
         marca: "honda",
         caracteristicas: ["SUV", "8 Asientos", "AWD", "Navegación"],
         rating: 4.7,
         popular: false,
         combustible: "Gasolina",
-        año: 2024
+        año: 2024,
+        galeria: [
+            "img/Imagen interior crv blanca 2016.jpg",
+            "video/Video crv blanca 2016.mp4"
+        ]
     },
     {
         id: 9,
         titulo: "Hyundai Santa Fe 2015",
         imagen: "img/Santa Fe.jpg",
-        precio: 75,
+        precio: 45,
         marca: "hyundai",
         caracteristicas: ["SUV", "5 Asientos", "AWD", "Navegación"],
         rating: 4.7,
