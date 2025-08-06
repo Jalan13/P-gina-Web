@@ -43,7 +43,7 @@ const vehiculos = [
     {
         id: 4,
         titulo: "Honda CR-V 2007",
-        imagen: "img/CRV Negra 2010.jpg",
+        imagen: "img/Imagen honda 2011.jpg",
         precio: 40,
         marca: "honda",
         caracteristicas: ["SUV", "5 Asientos", "FWD",],
